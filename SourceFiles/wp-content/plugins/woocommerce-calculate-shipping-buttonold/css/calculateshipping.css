@@ -1,0 +1,19 @@
+.calculateshipping-button-container {
+	overflow: visible;
+   	width: 100%;
+	height: 25px; 
+	clear:both;
+	margin-bottom: 30px;
+}
+
+.calculateshipping-button {
+    width: 300px;
+    height: 25px;
+}
+
+.cs-btn { z-index: 9999; }
+
+.cs-btn span {
+    z-index: 9999 !important; width:500px !important;
+    overflow: visible;
+}
