@@ -1,4 +1,6 @@
-<?php /* Template Name: Home Page */ ?>
+<?php /* Template Name: Home Page */ 
+ error_reporting(0);
+?>
 <?php get_header(); ?>
 
 <div id="page-header" class="home">
@@ -29,11 +31,25 @@
 				<a href="<?php the_field( 'homepage-small-banner-1-link' ); ?>"><?php echo wp_get_attachment_image( get_field( 'homepage-small-banner-1' ), 'homepage-banner-small' ); ?></a>
 				<h2><a href="<?php the_field( 'homepage-small-banner-1-link' ); ?>"><?php the_field( 'homepage-small-banner-1-text' ); ?></a></h2>
 			</div>
+                    <?php
+                    if( trim(strtolower(get_field( 'homepage-shipping-option' )) ) == 'upload' && trim(get_field('homepage-shipping-banner') != '' )){
+                    ?>
+			<div class="banner small">
+				<?php echo wp_get_attachment_image( get_field( 'homepage-shipping-banner' ), 'homepage-banner-small' ); ?>
+				<h2><?php the_field( 'homepage-shipping-title' ); ?> <small><?php the_field( 'homepage-shipping-text' ); ?></small></h2>
+			</div>                    
+                    <?php
+                    }
+                    else{
+                    ?>
 			<div class="banner shipping">
 				<div class="inner">
 					<h2><?php the_field( 'homepage-shipping-title' ); ?> <small><?php the_field( 'homepage-shipping-text' ); ?></small></h2>
 				</div>
 			</div>
+                    <?php                        
+                    }
+                    ?>
 		</div>
 		
 		<div class="medium-4 columns banner medium">
@@ -46,11 +62,27 @@
 				<a href="<?php the_field( 'homepage-small-banner-2-link' ); ?>"><?php echo wp_get_attachment_image( get_field( 'homepage-small-banner-2' ), 'homepage-banner-small' ); ?></a>
 				<h2><a href="<?php the_field( 'homepage-small-banner-2-link' ); ?>"><?php the_field( 'homepage-small-banner-2-text' ); ?></a></h2>
 			</div>
+
+                    <?php
+                    if( trim(strtolower(get_field( 'homepage-returns-box' )) ) == 'upload' && trim(get_field('homepage-shipping-banner') != '' )){
+                    ?>
+			<div class="banner small">
+				<?php echo wp_get_attachment_image( get_field( 'homepage-returns-banner' ), 'homepage-banner-small' ); ?>
+				<h2><?php the_field( 'homepage-returns-title' ); ?> <small><?php the_field( 'homepage-returns-text' ); ?></small></h2>
+			</div>                    
+                    <?php
+                    }
+                    else{
+                    ?>
 			<div class="banner returns">
 				<div class="inner">
 					<h2><?php the_field( 'homepage-returns-title' ); ?> <small><?php the_field( 'homepage-returns-text' ); ?></small></h2>
 				</div>
 			</div>
+                    <?php                        
+                    }
+                    ?>
+                    
 		</div>
 				
 	</div>
