@@ -34,3 +34,12 @@
 	<?php endwhile; endif; ?>
 	
 </ul>
+<script type="text/javascript">
+jQuery(function($){
+    $('div.gallery div.orbit-container ul.orbit-slides-container li.thumbnail a.th').click(function() {
+        $('div.gallery div.images .woocommerce-main-image').attr('href', $(this).attr('href') );
+    });
+    
+    $('div.gallery div.orbit-container ul.orbit-slides-container li.thumbnail a.th img, div.gallery div.images .woocommerce-main-image').attr('rel', 'gallery-images-<?php echo $post->ID; ?>');
+});
+</script>
