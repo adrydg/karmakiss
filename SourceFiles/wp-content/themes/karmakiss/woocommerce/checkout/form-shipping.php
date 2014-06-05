@@ -43,4 +43,28 @@
 
 	</div>
 
+        <script type="text/javascript">
+        jQuery(function($){
+            $('#shiptobilling_bill #shiptobilling_bill-checkbox').change(function() {
+               if( this.checked ){
+                  $('#shipping_first_name').val( $('#billing_first_name').val() );
+                  $('#shipping_last_name').val( $('#billing_last_name').val() );
+                  $('#shipping_address_1').val( $('#billing_address_1').val() );
+                  $('#shipping_city').val( $('#billing_city').val() );
+                  $('#shipping_state').val( $('#billing_state').val() );
+                  $('#shipping_postcode').val( $('#billing_postcode').val() );
+                  $('#shipping_country').val( $('#billing_country').val() );
+               }
+               else{
+                  $('#shipping_first_name').val( '' );
+                  $('#shipping_last_name').val( '' );
+                  $('#shipping_address_1').val( '' );
+                  $('#shipping_city').val( '' );
+                  $('#shipping_state').val( '' );
+                  $('#shipping_postcode').val( '' );
+                  $('#shipping_country').val( '' );
+               }
+            });
+        });
+        </script>
 <?php endif; ?>
