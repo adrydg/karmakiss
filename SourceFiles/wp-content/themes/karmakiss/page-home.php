@@ -32,11 +32,24 @@
 				<h2><a href="<?php the_field( 'homepage-small-banner-1-link' ); ?>"><?php the_field( 'homepage-small-banner-1-text' ); ?></a></h2>
 			</div>
                     <?php
-                    if( trim(strtolower(get_field( 'homepage-shipping-option' )) ) == 'upload' && trim(get_field('homepage-shipping-banner') != '' )){
+                    if( trim(strtolower(get_field( 'homepage-shipping-option' )) ) == 'upload image' ){                        
                     ?>
-			<div class="banner small">
-				<?php echo wp_get_attachment_image( get_field( 'homepage-shipping-banner' ), 'homepage-banner-small' ); ?>
-				<h2><?php the_field( 'homepage-shipping-title' ); ?> <small><?php the_field( 'homepage-shipping-text' ); ?></small></h2>
+			<div class="banner shipping">
+                            <div class="">
+				<?php 
+                                $homepageShippingBanner = get_field( 'homepage-shipping-banner' );
+                                echo wp_get_attachment_image( $homepageShippingBanner['id'], 'homepage-banner-small' ); 
+                                
+                                if( trim(get_field( 'homepage-shipping-title' )) != '' ){
+                                ?>
+				<h2 style="padding-top: 0px; position: absolute; top: 310px; left: 113px; border: 0px none;">
+                                    <?php the_field( 'homepage-shipping-title' ); ?> 
+                                    <small><?php the_field( 'homepage-shipping-text' ); ?></small>
+                                </h2>
+                                <?php
+                                }
+                                ?>
+                            </div>
 			</div>                    
                     <?php
                     }
@@ -64,11 +77,25 @@
 			</div>
 
                     <?php
-                    if( trim(strtolower(get_field( 'homepage-returns-box' )) ) == 'upload' && trim(get_field('homepage-shipping-banner') != '' )){
+
+                    if( trim(strtolower(get_field( 'homepage-returns-box' )) ) == 'upload image' ){
                     ?>
-			<div class="banner small">
-				<?php echo wp_get_attachment_image( get_field( 'homepage-returns-banner' ), 'homepage-banner-small' ); ?>
-				<h2><?php the_field( 'homepage-returns-title' ); ?> <small><?php the_field( 'homepage-returns-text' ); ?></small></h2>
+			<div class="banner returns">
+                            <div class="">
+				<?php 
+                                $homepageReturnsBanner = get_field( 'homepage-returns-banner' );
+                                echo wp_get_attachment_image( $homepageReturnsBanner['id'], 'homepage-banner-small' ); 
+                                
+                                if( trim(get_field( 'homepage-returns-title' )) != '' ){
+                                ?>
+				<h2 style="padding-top: 0px; position: absolute; top: 310px; left: 113px; border: 0px none;">
+                                    <?php the_field( 'homepage-returns-title' ); ?> 
+                                    <small><?php the_field( 'homepage-returns-text' ); ?></small>
+                                </h2>
+                                <?php
+                                }
+                                ?>
+                            </div>
 			</div>                    
                     <?php
                     }
