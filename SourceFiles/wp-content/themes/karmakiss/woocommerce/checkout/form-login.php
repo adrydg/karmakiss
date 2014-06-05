@@ -8,14 +8,28 @@
 		<form method="post" class="guest_checkout">
 			<p class="form-row small-9 columns">
 				<input type="email" class="input-text" name="email" placeholder="E-mail address" id="guest_email" />
-			</p>
+			</p>                                                
 			<p class="form-row small-3 columns">
-				<input type="submit" class="button next" value="Continue" data-next="2" />
+				<input type="submit" class="button next" value="Continue" data-next="2" onclick="sendResultToMailChimp(this);" />
 			</p>
+                        <input id="subscribeToMailchimp" name="subscribeToMailchimp" type="checkbox" checked /> 
+                        <label for="subscribeToMailchimp">I would like to receive exclusive promotions and discounts from Karma Kiss.</label>
 		</form>
 	</div>
 </div>
+<div style="visibility: hidden; position: absolute; bottom: 0; right: 0;"><?php echo do_shortcode('[woochimp_form]'); ?></div>
+<style>
+    
+</style>
+<script type="text/javascript">
+function sendResultToMailChimp(){
+    if( jQuery('#subscribeToMailchimp:checked').length > 0 ){
+        jQuery('#woochimp_registration_form_shortcode #woochimp_shortcode_subscription_email').val( jQuery('form.guest_checkout #guest_email').val() );
+        jQuery('#woochimp_shortcode_subscription_submit').click();            
+    }
 
+}    
+</script>
 <div class="medium-6 columns">
 	<div class="login clearfix">
 		<h3>Registered <span>customers</span></h3>
