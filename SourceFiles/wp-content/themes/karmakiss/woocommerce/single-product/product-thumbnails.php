@@ -24,8 +24,10 @@
 	<?php if ( ( $thumbnail_no + 1 ) % 4 == 1 ) : ?>
 	<li class="thumbnail" data-orbit-slide="thumbnail-<?php echo $thumbnail_no / 4 + 1; ?>">
 	<?php endif; ?>
-	
-	<a data-orbit-link="gallery-<?php echo $thumbnail_no; ?>" class="th"><img src="http://img.youtube.com/vi/<?php parse_str( parse_url( get_sub_field( 'video' ), PHP_URL_QUERY ), $url ); echo $url['v']; ?>/2.jpg" width="50" height="50" alt="thumbnail" /></a>
+	<?php
+        parse_str( parse_url( get_sub_field( 'video' ), PHP_URL_QUERY ), $url );
+        ?>
+	<a data-youtubelink="<?php echo $url['v']; ?>" data-orbit-link="gallery-<?php echo $thumbnail_no; ?>" class="th"><img src="http://img.youtube.com/vi/<?php echo $url['v']; ?>/2.jpg" width="50" height="50" alt="thumbnail" /></a>
 
 	<?php if ( ( ( $thumbnail_no + 1 ) % 4 == 0 ) || ( ( $thumbnail_no - count( $thumbnails ) + 1 ) == count( get_field( 'videos' ) ) ) ) : ?>
 	</li>
@@ -37,7 +39,15 @@
 <script type="text/javascript">
 jQuery(function($){
     $('div.gallery div.orbit-container ul.orbit-slides-container li.thumbnail a.th').click(function() {
-        $('div.gallery div.images .woocommerce-main-image').attr('href', $(this).attr('href') );
+        if( $.trim($(this).attr('data-youtubelink')) != '' ){
+            $('div.gallery div.images .woocommerce-main-image').attr('href', 'http://youtube.com/watch?v='+$(this).attr('data-youtubelink'));
+            $('div.gallery div.images .woocommerce-main-image').attr('itemprop', 'video');                        
+            $('div.gallery div.images .woocommerce-main-image img').attr('src', "http://img.youtube.com/vi/"+$(this).attr('data-youtubelink')+"/2.jpg");   
+        }
+        else{
+            $('div.gallery div.images .woocommerce-main-image').attr('href', $(this).attr('href') );
+            $('div.gallery div.images .woocommerce-main-image').attr('itemprop', 'image');
+        }        
     });
     
     $('div.gallery div.orbit-container ul.orbit-slides-container li.thumbnail a.th img, div.gallery div.images .woocommerce-main-image').attr('rel', 'gallery-images-<?php echo $post->ID; ?>');
