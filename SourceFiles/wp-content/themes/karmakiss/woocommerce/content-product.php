@@ -11,5 +11,9 @@
 		<p><a href="<?php the_permalink(); ?>"><?php echo short_title( '...', 25 ); ?></a></p>
 		<?php do_action( 'woocommerce_after_shop_loop_item_title' ); ?>
 	</div>
+        <form class="cart upsellProductAddToCartForm" method="post" enctype='multipart/form-data' style="display: none;"> 
+ 	<input type="hidden" name="add-to-cart" value="<?php echo get_the_ID(); ?>" /> 	
+ 	<button type="submit" class="single_add_to_cart_button button expand alt upsellProductAddToCartBtn">Add to cart</button>
+        </form>        
 	<?php do_action( 'woocommerce_after_shop_loop_item' ); ?>
 </div>

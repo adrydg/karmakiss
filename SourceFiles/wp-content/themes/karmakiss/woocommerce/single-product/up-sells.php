@@ -37,11 +37,31 @@ $products = new WP_Query( $args );
 		
 	<?php while ( $products->have_posts() ) : $products->the_post(); ?>
 	
-		<?php wc_get_template_part( 'content', 'product' ); ?>
-	
+		<?php 
+                
+                wc_get_template_part( 'content', 'product' ); 
+                //echo do_shortcode('[add_to_cart id="'.get_the_ID().'"]');
+                
+                /* <a href="<?php do_shortcode('[add_to_cart_url id="25"]'); ?>" rel="nofollow" data-product_id="<?php echo get_the_ID(); ?>">Add to Cart</a> */
+                ?>
+                
+
+            
 	<?php endwhile; ?>
 		
 	</div>
+    <style>
+        #similar div.products form.upsellProductAddToCartForm{
+            display: inline-block !important;
+            padding: 0;
+            width: 180px;
+        }
+        #similar div.products form.upsellProductAddToCartForm .single_add_to_cart_button.button.expand.alt.upsellProductAddToCartBtn {
+            font-size: 20px;
+            margin-top: -10px;
+            padding: 10px;
+        }        
+    </style>
 	
 </div> <!-- end #related -->
 <?php endif; wp_reset_postdata(); ?>
