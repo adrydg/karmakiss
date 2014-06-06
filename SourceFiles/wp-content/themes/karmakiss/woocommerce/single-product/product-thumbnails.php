@@ -36,6 +36,9 @@
 	<?php endwhile; endif; ?>
 	
 </ul>
+<div id="hiddenImagesDiv" style="width: 0 !important; height: 0 !important;">
+    
+</div>
 <script type="text/javascript">
 jQuery(function($){
     $('div.gallery div.orbit-container ul.orbit-slides-container li.thumbnail a.th').click(function() {
@@ -50,6 +53,18 @@ jQuery(function($){
         }        
     });
     
-    $('div.gallery div.orbit-container ul.orbit-slides-container li.thumbnail a.th, div.gallery div.images .woocommerce-main-image').attr('data-rel', 'prettyPhoto[gallery]');
+    $('div.gallery div.images .woocommerce-main-image').attr('data-rel', 'prettyPhoto[gallery]');
+    
+    $('div.gallery div.images .woocommerce-main-image').click(function(){
+        $('div.gallery div.orbit-container ul.orbit-slides-container li.thumbnail a.th').attr('data-rel', 'prettyPhoto[gallery]');
+    });
+    	
+    $('div.gallery div.orbit-container ul.orbit-slides-container li.thumbnail a.th').each(function( index, element ) {        
+        $(element).clone().appendTo( "#hiddenImagesDiv" );
+    });
+    
+    $( "#hiddenImagesDiv a.th" ).attr('data-rel', 'prettyPhoto[gallery]');
+
 });
+
 </script>
