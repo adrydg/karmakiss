@@ -50,6 +50,6 @@ jQuery(function($){
         }        
     });
     
-    $('div.gallery div.orbit-container ul.orbit-slides-container li.thumbnail a.th img, div.gallery div.images .woocommerce-main-image').attr('rel', 'gallery-images-<?php echo $post->ID; ?>');
+    $('div.gallery div.orbit-container ul.orbit-slides-container li.thumbnail a.th, div.gallery div.images .woocommerce-main-image').attr('data-rel', 'prettyPhoto[gallery]');
 });
 </script>
