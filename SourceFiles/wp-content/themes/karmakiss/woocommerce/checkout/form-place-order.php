@@ -21,3 +21,21 @@
 			<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
 
 		</div>
+<script type="text/javascript">
+jQuery( document ).ready( function(){
+    /*
+        var currentShipping = jQuery('#checkout #order_review h3.shipping span').html();
+
+        //check number of indexOf
+        var firstIndex = currentShipping.indexOf(".");
+        var secondIndex = currentShipping.indexOf(".", firstIndex+1 );
+        var newShipping = '';
+
+        if( secondIndex != -1 ){
+           newShipping = currentShipping.substring(0, secondIndex );	
+        }
+
+        jQuery('#checkout #order_review h3.shipping span').html(newShipping );  
+        */
+});
+</script>
