@@ -23,7 +23,7 @@
 		</div>
 <script type="text/javascript">
 jQuery( document ).ready( function(){
-    /*
+    
         var currentShipping = jQuery('#checkout #order_review h3.shipping span').html();
 
         //check number of indexOf
@@ -36,6 +36,6 @@ jQuery( document ).ready( function(){
         }
 
         jQuery('#checkout #order_review h3.shipping span').html(newShipping );  
-        */
+        
 });
 </script>
